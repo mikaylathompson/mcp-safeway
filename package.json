@@ -1,0 +1,36 @@
+{
+  "name": "@striderlabs/mcp-safeway",
+  "version": "1.0.0",
+  "description": "MCP server connector for Safeway/Albertsons grocery delivery using Playwright browser automation",
+  "main": "dist/index.js",
+  "bin": {
+    "striderlabs-mcp-safeway": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "safeway",
+    "albertsons",
+    "grocery",
+    "delivery",
+    "playwright"
+  ],
+  "author": "Strider Labs",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "playwright": "^1.48.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
