@@ -55,6 +55,38 @@ Or with npx:
 npx @striderlabs/mcp-safeway
 ```
 
+## Testing
+
+Build the project before running tests:
+
+```bash
+npm run build
+node --test test/*.test.js
+```
+
+The default test run is local-only. The live integration suite is opt-in and only covers safe flows: search, product details, add-to-cart verification, cart readback, and cleanup removal. It does not schedule delivery, check out, or perform other irreversible actions.
+
+For a more reliable live setup, bootstrap a persistent Safeway browser session once with a phone number and verification code:
+
+```bash
+npm run build
+node scripts/bootstrap-session.js
+```
+
+The bootstrap script reads `SAFEWAY_PHONE_NUMBER` and saves Playwright storage state to `tmp/safeway-session-live-integration.json` by default. Future live tests and account queries reuse that saved browser state automatically.
+
+You can also continue to use `SAFEWAY_LIVE_TEST_EMAIL` and `SAFEWAY_LIVE_TEST_PASSWORD`, or `SAFEWAY_EMAIL` and `SAFEWAY_PASSWORD`, for the live read-only test:
+
+```bash
+node --test test/live.integration.test.js
+```
+
+To enable the live cart mutation test as well, set:
+
+```bash
+SAFEWAY_LIVE_TEST_ALLOW_CART_MUTATIONS=1
+```
+
 ## Tools
 
 ### Authentication

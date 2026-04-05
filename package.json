@@ -9,6 +9,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node src/index.ts",
+    "bootstrap-session": "node scripts/bootstrap-session.js",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
